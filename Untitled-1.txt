@@ -1,0 +1,52 @@
+<cfcomponent rest="true" restPath="locales" produces="application/json">
+<cffunction
+        name="insertLocales" restPath="/insertLocales"
+        access="remote"
+        returntype="any"
+        httpMethod="GET"
+        produces="application/json">
+
+<cfquery
+    datasource="db" 
+    name="listLocales"
+    >
+    SELECT id,ci_type from locales 
+</cfquery>
+    <cfset result = listLocales>  
+    <cfreturn serializeJSON(result)> 
+</cffunction>
+
+
+<cffunction
+    restpath="/add"
+    httpMethod="POST">
+> 
+<cfquery name="qAdd" datasource="db"> 
+    INSERT INTO locales (ci_type, andar, [site], sala)
+    VALUES (
+        2,
+        'andarvarchar',
+        'sitevarchar',
+        'salavarchar'
+    );
+</cfquery> 
+
+
+<cfif>
+    <cfset response["Sucesso"]=true>
+    <cfset response["message"]="Adicionado">
+    <cfelse>
+    <cfset response["Sucesso"]=false>
+    <cfset response["message"]="Erro ao adicionar">
+</cfif>
+
+
+</cffunction>
+</cfcomponent>
+
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+Existem 3 tabela criadas
+-dbo.locations_vbr
+-dbo.locations
+-dbo.locales
