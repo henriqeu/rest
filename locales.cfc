@@ -30,8 +30,15 @@
         >    
 
 <cfoutput>
-<cfset params= "Parametros a serem inseridos">
-<cfreturn #params#>
+
+
+<cfquery name = "qryAddLocale" datasource = "db">
+    insert into locales(ci_type)
+    values(<cfqueryparam value ="#ci_type#" CFSQLType = "CF_SQL_INTEGER">)
+</cfquery>
+
+
+
 </cfoutput>
 
 
